@@ -11,7 +11,8 @@ class Factura
 
     def calculate
         subtotal = getSubTotal()
-        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\nsubtotal:#{subtotal}"
+        subtotalString = "# #{@amount} * $#{@unitPrice} = $#{@subtotal}"
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}"
     end
 
     
