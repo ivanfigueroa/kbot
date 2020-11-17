@@ -1,12 +1,13 @@
 class Factura
-    def initialize()
+    def initialize(amount)
+        @amount = amount
     end
 
-    def calculate ()
-        return "Hola, Mundo" 
+    def calculate
+        return "Cantidad: #{@amount}"
     end
 end
 
-
-invoice_bot = Factura.new()
+amount = ARGV[0];
+invoice_bot = Factura.new(amount)
 puts invoice_bot.calculate()
