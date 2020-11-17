@@ -1,13 +1,20 @@
 class Factura
     def initialize(amount, unitPrice, state)
-        @amount = amount
-        @unitPrice = unitPrice
+        @amount = amount.to_i
+        @unitPrice = unitPrice.to_f
         @state = state
     end
 
-    def calculate
-        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}"
+    def getSubTotal()
+        return @amount * @unitPrice
     end
+
+    def calculate
+        subtotal = getSubTotal()
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\nsubtotal:#{subtotal}"
+    end
+
+    
 end
 
 amount = ARGV[0];
