@@ -1,13 +1,15 @@
 class Factura
-    def initialize(amount)
+    def initialize(amount, unitPrice)
         @amount = amount
+        @unitPrice = unitPrice
     end
 
     def calculate
-        return "Cantidad: #{@amount}"
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}"
     end
 end
 
 amount = ARGV[0];
-invoice_bot = Factura.new(amount)
+unitPrice = ARGV[1];
+invoice_bot = Factura.new(amount, unitPrice)
 puts invoice_bot.calculate()
