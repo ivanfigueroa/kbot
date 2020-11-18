@@ -11,16 +11,29 @@ class Factura
 
     def getTaxByState(subtotal)
         #DEFAULT CA
-        @tax = 0.0825
-        return subtotal * @tax
+        tax = 0.0825;
+        @taxPercentage = 0.0825 * 100
+        return subtotal * tax
+    end
+
+    def getDiscount(totalAfterTax)
+        if (totalAfterTax >= 1000)
+            @discountPercentage = 3
+            return totalAfterTax * 0.03
+        else
+            @discountPercentage = 0
+            return 0
+        end
     end
 
     def calculate
         subtotal = getSubTotal()
         subtotalString = "# #{@amount} * $#{@unitPrice} = $#{subtotal}"
-        totalAfterTax = getTaxByState(subtotal)
-        taxString = "CA (%#{@tax}) = $#{totalAfterTax}"
-        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}"
+        tax = getTaxByState(subtotal)
+        taxString = "CA (%#{@taxPercentage}) = $#{tax}"
+        totalAfterTax = subtotal-tax
+        discount = getDiscount(totalAfterTax);
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}\ndiscount: #{discount}"
     end
 
     
