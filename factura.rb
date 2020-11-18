@@ -26,14 +26,20 @@ class Factura
         end
     end
 
+    def getTotal(total, discount)
+        return total - discount
+    end
+
     def calculate
         subtotal = getSubTotal()
         subtotalString = "# #{@amount} * $#{@unitPrice} = $#{subtotal}"
         tax = getTaxByState(subtotal)
         taxString = "CA (%#{@taxPercentage}) = $#{tax}"
-        totalAfterTax = subtotal-tax
+        totalAfterTax = subtotal+tax
         discount = getDiscount(totalAfterTax);
-        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}\ndiscount: #{discount}"
+        discountString = "DTO(%#{@discountPercentage}) = $#{discount}"
+        totalAfterDiscount = getTotal(totalAfterTax, discount)
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}\n#{discountString}\n#{totalAfterDiscount}"
     end
 
     
