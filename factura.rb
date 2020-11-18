@@ -19,7 +19,7 @@ class Factura
         subtotal = getSubTotal()
         subtotalString = "# #{@amount} * $#{@unitPrice} = $#{subtotal}"
         totalAfterTax = getTaxByState(subtotal)
-        taxString = "#{@state} (%#{@tax}) = $#{totalAfterTax}"
+        taxString = "CA (%#{@tax}) = $#{totalAfterTax}"
         return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}"
     end
 
