@@ -17,7 +17,8 @@ class Factura
     end
 
     def getDiscount(totalAfterTax)
-        if (totalAfterTax >= 1000)
+        case totalAfterTax
+        when 1001..5000
             @discountPercentage = 3
             return totalAfterTax * 0.03
         else
