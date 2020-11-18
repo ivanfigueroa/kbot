@@ -21,6 +21,9 @@ class Factura
         when 1001..5000
             @discountPercentage = 3
             return totalAfterTax * 0.03
+        when 5001..7000
+            @discountPercentage = 5
+            return totalAfterTax * 0.05
         else
             @discountPercentage = 0
             return 0
