@@ -30,6 +30,9 @@ class Factura
         when 10001..50000
             @discountPercentage = 10
             return totalAfterTax * 0.1
+        when 50000..Float::INFINITY
+            @discountPercentage = 15
+            return totalAfterTax * 0.15
         else
             @discountPercentage = 0
             return 0
