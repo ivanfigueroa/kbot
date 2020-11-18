@@ -39,7 +39,8 @@ class Factura
         discount = getDiscount(totalAfterTax);
         discountString = "DTO(%#{@discountPercentage}) = $#{discount}"
         totalAfterDiscount = getTotal(totalAfterTax, discount)
-        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}\n#{discountString}\n#{totalAfterDiscount}"
+        totalString = "Total = $#{totalAfterDiscount}"
+        return "Cantidad: #{@amount} \nPrecio Unitario: #{@unitPrice}\nEstado: #{@state}\n#{subtotalString}\n#{taxString}\n#{discountString}\n#{totalString}"
     end
 
     
